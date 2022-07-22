@@ -7,8 +7,8 @@ import { decrementLikes, incrementLikes } from './redux/actions'
 const Likes = (props) => {
   return (
     <div className='button-controls'>
-      <button onClick={props.onIcrementLikes}>♥{props.likes}</button>
-      <button onClick={props.onDerementLikes}>Dislike</button>
+      <button onClick={props.onIcrementLikes}>♥ {props.likes} Like</button>
+      <button disabled={props.likes === 0} onClick={props.onDerementLikes}>Dislike</button>
     </div>
   )
 }

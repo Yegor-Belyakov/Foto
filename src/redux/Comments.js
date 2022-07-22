@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import SingleComment from '../SingleComment'
 import uniqid from 'uniqid'
-import { commentCreate } from './actions'
+import { commentCreate, commentsLoad } from './actions'
 
 function Comments(props) {
   const dispatch = useDispatch()
@@ -18,6 +18,10 @@ function Comments(props) {
     dispatch(commentCreate(textComment, id))
     setTextComment('')
   }
+
+  useEffect(() => {
+    dispatch(commentsLoad())
+  }, [dispatch])
   return (
     <div className='card-comments'>
       <form onSubmit={handleSubmit} className='comments-item-create'>
